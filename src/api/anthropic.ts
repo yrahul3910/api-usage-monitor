@@ -17,7 +17,7 @@ type AnthropicResponse = {
     data: AnthropicResponseData[]
 }
 
-export default async function get_anthropic_credits(): Promise<AnthropicReport> {
+export default async function get_anthropic_report(): Promise<AnthropicReport> {
     const BASE_URL = "https://api.anthropic.com/v1/organizations/cost_report";
     const OPTIONS = [
         ["starting_at", new Date(2026, 0, 1).toISOString()],

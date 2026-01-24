@@ -4,15 +4,18 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "start": "bun index.ts"
+    "start": "bun index.tsx"
   },
   "devDependencies": {
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "@types/react": "^19.2.9"
   },
   "peerDependencies": {
     "typescript": "^5"
   },
   "dependencies": {
-    "dotenv": "^17.2.3"
+    "dotenv": "^17.2.3",
+    "ink": "^6.6.0",
+    "react": "^19.2.3"
   }
 }
