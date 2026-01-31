@@ -13,7 +13,8 @@ const AnthropicUI = () => {
     }, []);
 
     return (
-        <Box margin={2} borderStyle="round" padding={1}>
+        <Box flexDirection="column" margin={2} borderStyle="round" padding={1}>
+            <Text color="#d97757">Anthropic</Text>
             <Text>{totalCost}</Text>
         </Box>
     );

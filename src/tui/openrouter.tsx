@@ -10,7 +10,7 @@ const OpenRouterUI = () => {
         // Fetch the cost data when component mounts
         get_openrouter_report()
             .then(data => {
-                let remaining = data.total_credits - data.total_usage;
+                let remaining = (data.total_credits - data.total_usage).toFixed(2);
 
                 setTotalCost(`Total cost: $${data.total_usage}`);
                 setCreditBalance(`Credits remaining: $${remaining}`);
@@ -20,6 +20,7 @@ const OpenRouterUI = () => {
 
     return (
         <Box margin={2} borderStyle="round" padding={1} flexDirection="column">
+            <Text color="#6568f2">OpenRouter</Text>
             <Text>{totalCost}</Text>
             <Text>{creditBalance}</Text>
         </Box>
