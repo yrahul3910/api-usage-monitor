@@ -7,7 +7,7 @@ const OpenAIUI = () => {
 
     useEffect(() => {
         get_openai_costs()
-            .then((r) => setStatus(`Total cost (last 30 days): $${r.totalCost.toFixed(2)}`))
+            .then((r) => setStatus(`Cost (30d): $${r.totalCost.toFixed(2)}`))
             .catch((error) => setStatus(`Error: ${error.message}`));
     }, []);
 

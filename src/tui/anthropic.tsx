@@ -8,7 +8,7 @@ const AnthropicUI = () => {
     useEffect(() => {
         // Fetch the cost data when component mounts
         get_anthropic_report()
-            .then(cost => setTotalCost(`Total cost: ${cost.totalCost}`))
+            .then(cost => setTotalCost(`Cost (30d): ${cost}`))
             .catch(error => setTotalCost(`Error: ${error.message}`));
     }, []);
 
