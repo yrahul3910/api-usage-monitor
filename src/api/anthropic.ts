@@ -1,5 +1,3 @@
-import type { AnthropicReport } from "./types";
-
 type AnthropicResponseResult = {
     currency: string,
     amount: string
@@ -17,11 +15,16 @@ type AnthropicResponse = {
     data: AnthropicResponseData[]
 }
 
-export default async function get_anthropic_report(): Promise<AnthropicReport> {
+export default async function get_anthropic_report(): Promise<string> {
     const BASE_URL = "https://api.anthropic.com/v1/organizations/cost_report";
+
+    const now = new Date();
+    const endingAt = new Date(now.getTime() + 1000);
+    const startingAt = new Date(endingAt.getTime() - 30 * 24 * 60 * 60 * 1000);
+
     const OPTIONS = [
-        ["starting_at", new Date(2026, 0, 1).toISOString()],
-        ["ending_at", new Date(2026, 0, 31).toISOString()],
+        ["starting_at", startingAt.toISOString()],
+        ["ending_at", endingAt.toISOString()],
     ];
     const QUERY_PARAMS = OPTIONS.map(([k, v], _) => `${k}=${v}`).join("&");
     const URL = BASE_URL + "?" + QUERY_PARAMS;
@@ -59,7 +62,5 @@ export default async function get_anthropic_report(): Promise<AnthropicReport> {
         curPageId = body.next_page;
     }
 
-    return {
-        totalCost: "$" + (total / 100.0).toFixed(2)
-    };
+    return "$" + (total / 100.0).toFixed(2);
 }
